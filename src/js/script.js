@@ -177,6 +177,21 @@ const select = {
               price -= option.price;
             }
           }
+
+          // find image with class .paramId-optionId
+          const optionImage = thisProduct.imageWrapper.querySelector(`.${paramId}-${optionId}`);
+
+          // check if image was found
+          if(optionImage) {
+            // if option is selected
+            if(optionSelected) {
+              // add class active to image
+              optionImage.classList.add(classNames.menuProduct.imageVisible);
+            } else {
+              // remove class active from image
+              optionImage.classList.remove(classNames.menuProduct.imageVisible);
+            }
+          }
         }
       }
 
