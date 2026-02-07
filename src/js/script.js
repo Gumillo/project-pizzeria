@@ -409,7 +409,19 @@ const select = {
     add(menuProduct) {
       const thisCart = this;
 
+      /* generate HTML based on template */
+      const generatedHTML = templates.cartProduct(menuProduct);
+
+      /* create element using utils.createElementFromHTML */
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+
+      /* add element to cart */
+      thisCart.dom.productList.appendChild(generatedDOM);
+
       console.log('adding product', menuProduct);
+
+      thisCart.products.push(menuProduct);
+      thisCart.update();
     }
 
     update() {
