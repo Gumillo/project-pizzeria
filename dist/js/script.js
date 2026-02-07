@@ -590,9 +590,26 @@ const select = {
         })
         .then(function(parsedResponse){
           console.log('parsedResponse', parsedResponse);
+          thisCart.clearCart();
         });
 
       console.log('sending order', thisCart);
+    }
+
+    clearCart() {
+      const thisCart = this;
+
+      /* remove all products from DOM */
+      thisCart.dom.productList.innerHTML = '';
+
+      /* clear products array */
+      thisCart.products = [];
+
+      /* reset form */
+      thisCart.dom.form.reset();
+
+      /* update totals */
+      thisCart.update();
     }
   }
 
