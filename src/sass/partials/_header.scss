@@ -10,8 +10,9 @@
 }
 
 .logo {
-  display: inline-block;
+  display: block;
   line-height: 1;
+  margin-bottom: $base-size * 2;
 
   &__title {
     margin: 0 0 $base-size 0;
@@ -33,4 +34,22 @@
     font-style: italic;
   }
 
+}
+.main-nav {
+  display: block;
+
+  a {
+    margin: 0 ($base-size * 1.5);
+    padding: $base-size;
+    color: $color-light;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: $font-semibold;
+    transition: $transition;
+
+    &:hover,
+    &.active {
+      color: $color-main;
+    }
+  }
 }
