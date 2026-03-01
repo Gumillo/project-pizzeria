@@ -1,0 +1,221 @@
+.home-wrapper {
+  margin: ($base-size * 3.5) auto;
+  max-width: 700px;
+}
+
+.home-widget {
+  padding: ($base-size * 2.5);
+  border-radius: $radius;
+  background: $color-light;
+
+  &__options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $base-size;
+    margin-bottom: ($base-size * 3);
+  }
+
+  &__box {
+    position: relative;
+    display: block;
+    min-height: 120px;
+    padding: ($base-size * 2);
+    border-radius: $radius;
+    color: $color-light;
+    text-decoration: none;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+
+    &:nth-child(1) {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('../images/home/pizza-7.jpg');
+    }
+
+    &:nth-child(2) {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('../images/home/pizza-8.jpg');
+    }
+
+    &--hours {
+      grid-column: 1 / -1;
+      min-height: 100px;
+      background: $color-main;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .home-widget__title {
+      @extend .h2 !optional;
+      text-transform: uppercase;
+      transition: transform 300ms ease;
+    }
+
+    .home-widget__subtitle {
+      font-size: 13px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 300ms ease, transform 300ms ease;
+    }
+
+    &:hover {
+      .home-widget__title {
+        transform: translateY(-6px);
+      }
+
+      .home-widget__subtitle {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__box--hours .home-widget__subtitle {
+    opacity: 1;
+    transform: none;
+  }
+
+  &__carousel {
+    margin-bottom: ($base-size * 3);
+    padding: 0 0 ($base-size * 2);
+  }
+
+  .tns-nav {
+    text-align: center;
+    margin-top: ($base-size * 1.5);
+
+    button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: lighten($color-dark, 60%);
+      border: none;
+      margin: 0 4px;
+      padding: 0;
+      cursor: pointer;
+      transition: background 200ms ease;
+    }
+
+    .tns-nav-active {
+      background: $color-dark;
+    }
+  }
+
+  &__slide {
+    padding: 0;
+  }
+
+  &__slide-inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: ($base-size * 2);
+    align-items: center;
+  }
+
+  &__slide-img {
+    flex: 0 0 32%;
+    width: 32%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: $radius;
+    filter: grayscale(100%);
+    margin: 0;
+    padding: 0;
+  }
+
+  &__slide-content {
+    flex: 1;
+  }
+
+  &__slide-title {
+    @extend .h2 !optional;
+    text-transform: uppercase;
+    margin-bottom: $base-size;
+  }
+
+  &__slide-text {
+    color: lighten($color-dark, 20%);
+    margin-bottom: $base-size;
+    font-size: 14px;
+  }
+
+  &__slide-author {
+    @extend .h3 !optional;
+    text-transform: uppercase;
+    color: lighten($color-dark, 20%);
+  }
+
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $base-size;
+    margin-bottom: ($base-size * 1.5);
+  }
+
+  &__link {
+    color: $color-main;
+    font-size: 12px;
+    text-decoration: none;
+  }
+
+  &__gallery-item {
+    position: relative;
+    display: block;
+    height: 140px;
+    border-radius: $radius;
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 300ms ease;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.05);
+      }
+
+      .home-widget__gallery-overlay {
+        opacity: 1;
+      }
+
+      .home-widget__gallery-icons {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__gallery-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+
+  &__gallery-icons {
+    @include center();
+    display: flex;
+    gap: ($base-size * 1.5);
+    opacity: 0;
+    transition: opacity 300ms ease;
+
+    i {
+      color: $color-light;
+      font-size: 20px;
+      transition: color 300ms ease;
+
+      &:hover {
+        color: $color-main;
+      }
+    }
+  }
+}
