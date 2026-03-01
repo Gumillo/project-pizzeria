@@ -51,16 +51,17 @@
 }
 
 .rangeSlider {
-  top: $base-size;
+  top: ($base-size * 0.5);
   background: lighten($color-dark, 70%);
   box-shadow: none;
   height: $base-size;
+  overflow: visible;
 
   &__handle {
     box-shadow: none;
     border: 0;
-    transition-timing-function: cubic-bezier(0, 1, 0, 1);
-    transition: transform 100ms;
+    z-index: 2;
+    transition: transform 100ms cubic-bezier(0, 1, 0, 1);
 
     &::after {
       display: none;
@@ -69,8 +70,7 @@
     &__horizontal {
       width: ($base-size * 2);
       height: ($base-size * 2);
-      top: 50%;
-      transform: translate3d(-50%, -50%, 0);
+      top: -($base-size * 0.5);
       background: $color-main;
       border-radius: 50%;
     }
@@ -79,8 +79,8 @@
 
   &__fill {
     background: $color-main;
-    transition-timing-function: cubic-bezier(0, 1, 0, 1);
-    transition: width 100ms;
+    border-radius: 0;
+    transition: width 100ms cubic-bezier(0, 1, 0, 1);
     box-shadow: none;
   }
 
